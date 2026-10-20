@@ -1,0 +1,23 @@
+[package]
+name = "cold-steel"
+version = "0.0.4"
+edition = "2024"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
+
+[dependencies]
+clap = "4.6.7"
+directories = "6.0.0"
+dirs = "7.0.0"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+toml = { version = "1.1.8", features = ["preserve_order"] }
+indexmap = { version = "2.7", features = ["serde"] }
+crossterm = "0.29.0"
+ratatui = "0.30.2"
+has-nerd-font = "0.20260228.0"
+supports-unicode = "3.0"
