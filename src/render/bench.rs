@@ -61,7 +61,7 @@ impl BenchRenderer
     }
 }
 
-/// The implementation of the [Renderer] for [BenchRenderer].
+/// The implementation of the [Renderer] trait for the [BenchRenderer].
 impl Renderer for BenchRenderer
 {
     /// Retrieve the instance of the renderer data.

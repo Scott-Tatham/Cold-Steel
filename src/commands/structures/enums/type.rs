@@ -1,9 +1,9 @@
 /*!
- * Defines the types of commands that are processed.
+ * Stores the types of commands that are processed.
  */
 use clap::Subcommand;
 
-/// Defines the types of commands that are processed.
+/// Stores the types of commands that are processed.
 #[derive(Subcommand, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum CommandType
 {

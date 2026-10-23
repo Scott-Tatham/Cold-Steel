@@ -1,7 +1,6 @@
 /*!
  * Handles the printing of events.
  */
-
 use crossterm::style::{Color, Stylize};
 use ratatui::backend::IntoCrossterm;
 use crate::commands::structures::bench::enums::bench_event::BenchEvent;
@@ -34,9 +33,9 @@ pub fn print_events(events: &[Event], configuration: &Configuration, command_typ
     }
 }
 
-/// Prints a suite event.
+/// Prints a [SuiteEvent].
 /// # Arguments
-/// * `suite_event` - The suite event to print.
+/// * `suite_event` - The [SuiteEvent] to print.
 /// * `theme` - The theme to use for styling the output.
 /// * `command_type` - The type of command used.
 fn print_suite_event(suite_event: &SuiteEvent, theme: Option<&Theme>, command_type: CommandType)
@@ -106,9 +105,9 @@ fn print_suite_event(suite_event: &SuiteEvent, theme: Option<&Theme>, command_ty
     }
 }
 
-/// Prints a test event.
+/// Prints a [TestEvent].
 /// # Arguments
-/// * `test_event` - The test event to print.
+/// * `test_event` - The [TestEvent] to print.
 /// * `theme` - The theme to use for styling the output.
 /// * `command_type` - The type of command used.
 fn print_test_event(test_event: &TestEvent, theme: Option<&Theme>, command_type: CommandType)
@@ -171,9 +170,9 @@ fn print_test_event(test_event: &TestEvent, theme: Option<&Theme>, command_type:
     }
 }
 
-/// Prints a bench event.
+/// Prints a [BenchEvent].
 /// # Arguments
-/// * `test_event` - The bench event to print.
+/// * `test_event` - The [BenchEvent] to print.
 /// * `theme` - The theme to use for styling the output.
 fn print_bench_event(bench_event: &BenchEvent, theme: Option<&Theme>)
 {

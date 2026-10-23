@@ -1,11 +1,11 @@
 /*!
- * Defines the types of suite events that are rendered.
+ * Stores the suite event.
  */
 use serde::Deserialize;
 use super::super::result::SuiteResultEvent;
 use super::super::started::SuiteStartedEvent;
 
-/// Defines the types of suite events that are rendered.
+/// Stores the suite event.
 #[derive(Debug, Clone, Copy, PartialEq, Deserialize)]
 #[serde(tag = "event", rename_all = "lowercase")]
 pub enum SuiteEvent

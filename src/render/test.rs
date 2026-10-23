@@ -28,11 +28,11 @@ const TEST_TABS_BLOCK_PADDING: Padding = Padding::new(1, 1, 1, 0);
 /// The padding for the list block.
 const TEST_LIST_BLOCK_PADDING: Padding = Padding::new(1, 2, 0, 1);
 
-/// The padding for the expected output block.
-const EXPECTED_OUTPUT_BLOCK_PADDING: Padding = Padding::horizontal(1);
+/// The padding for the left output block.
+const LEFT_OUTPUT_BLOCK_PADDING: Padding = Padding::horizontal(1);
 
-/// The padding for the actual output block.
-const ACTUAL_OUTPUT_BLOCK_PADDING: Padding = Padding::horizontal(1);
+/// The padding for the right output block.
+const RIGHT_OUTPUT_BLOCK_PADDING: Padding = Padding::horizontal(1);
 
 /// The padding for the output block.
 const OUTPUT_BLOCK_PADDING: Padding = Padding::horizontal(1);
@@ -177,7 +177,7 @@ impl TestRender
     }
 }
 
-/// The implementation of the [Renderer] for [TestRender].
+/// The implementation of the [Renderer] trait for the [TestRenderer].
 impl Renderer for TestRender
 {
     /// Retrieve the instance of the renderer data.
@@ -294,34 +294,34 @@ impl Renderer for TestRender
 
                     if stdout.contains("assertion `left == right` failed")
                     {
-                        let mut expected = String::default();
-                        let mut actual = String::default();
+                        let mut left = String::default();
+                        let mut right = String::default();
 
                         for line in stdout.lines()
                         {
-                            if let Some(left) = line.strip_prefix("  left: ")
+                            if let Some(left_raw) = line.strip_prefix("  left: ")
                             {
-                                expected = left.to_string();
+                                left = left_raw.to_string();
                             }
 
-                            if let Some(right) = line.strip_prefix(" right: ")
+                            if let Some(right_raw) = line.strip_prefix(" right: ")
                             {
-                                actual = right.to_string();
+                                right = right_raw.to_string();
                             }
                         }
 
-                        if !expected.is_empty() && !actual.is_empty()
+                        if !left.is_empty() && !right.is_empty()
                         {
                             output_layout_constraints.push(Constraint::Fill(1));
                             let output_layout = super::renderer::build_layout(Direction::Horizontal, output_layout_constraints, main_layout[2]);
 
-                            let expect_result_block = super::renderer::build_block_with_title("Expected".to_string(), EXPECTED_OUTPUT_BLOCK_PADDING, Borders::ALL, background_style, title_style, border_style);
-                            let expect_result_paragraph = super::renderer::build_paragraph(expected, Wrap { trim: true }, text_style, expect_result_block);
-                            frame.render_widget(expect_result_paragraph, output_layout[0]);
+                            let left_result_block = super::renderer::build_block_with_title("Left".to_string(), LEFT_OUTPUT_BLOCK_PADDING, Borders::ALL, background_style, title_style, border_style);
+                            let left_result_paragraph = super::renderer::build_paragraph(left, Wrap { trim: true }, text_style, left_result_block);
+                            frame.render_widget(left_result_paragraph, output_layout[0]);
 
-                            let actual_result_block = super::renderer::build_block_with_title("Actual".to_string(), ACTUAL_OUTPUT_BLOCK_PADDING, Borders::ALL, background_style, title_style, border_style);
-                            let actual_result_paragraph = super::renderer::build_paragraph(actual, Wrap { trim: true }, text_style, actual_result_block);
-                            frame.render_widget(actual_result_paragraph, output_layout[1]);
+                            let right_result_block = super::renderer::build_block_with_title("Right".to_string(), RIGHT_OUTPUT_BLOCK_PADDING, Borders::ALL, background_style, title_style, border_style);
+                            let right_result_paragraph = super::renderer::build_paragraph(right, Wrap { trim: true }, text_style, right_result_block);
+                            frame.render_widget(right_result_paragraph, output_layout[1]);
                         }
                     }
 

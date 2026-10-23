@@ -19,7 +19,7 @@ pub struct Configuration
     pub themes: IndexMap<String, Theme>
 }
 
-/// The implementation of the [Configuration] struct.
+/// The definition of the [Configuration].
 impl Configuration
 {
     /// Initialises a new, default instance of the [Configuration] struct.

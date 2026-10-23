@@ -39,7 +39,7 @@ pub struct Theme
     pub border: Color
 }
 
-/// The implementation of the [Theme] struct.
+/// The definition of the [Theme].
 impl Theme
 {
     /// Initialises a new instance of the [Theme] struct.

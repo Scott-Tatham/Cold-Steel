@@ -1,12 +1,12 @@
 /*!
- * Defines the types of events that are rendered.
+ * Stores the types of events.
  */
 use serde::Deserialize;
 use super::super::bench::enums::bench_event::BenchEvent;
 use super::super::suite::enums::suite_event::SuiteEvent;
 use super::super::test::enums::test_event::TestEvent;
 
-/// Defines the types of events that are rendered.
+/// Stores the types of events.
 #[derive(Debug, Clone, PartialEq, Deserialize)]
 #[serde(tag = "type", rename_all = "lowercase")]
 pub enum Event

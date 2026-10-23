@@ -1,11 +1,11 @@
 /*!
- * Defines the types of test events that are rendered.
+ * Stores the test event.
  */
 use serde::Deserialize;
 use super::super::result::TestResultEvent;
 use super::super::started::TestStartedEvent;
 
-/// Defines the types of test events that are rendered.
+/// Stores the test event.
 #[derive(Debug, Clone, PartialEq, Deserialize)]
 #[serde(tag = "event", rename_all = "snake_case")]
 pub enum TestEvent

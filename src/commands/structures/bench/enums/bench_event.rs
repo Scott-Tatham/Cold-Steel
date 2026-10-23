@@ -1,9 +1,9 @@
 /*!
- * Defines the types of bench events that are rendered.
+ * Stores the bench event.
  */
 use serde::Deserialize;
 
-/// Defines the types of bench events that are rendered.
+/// Stores the bench event.
 #[derive(Debug, Clone, PartialEq, Deserialize)]
 pub struct BenchEvent
 {
