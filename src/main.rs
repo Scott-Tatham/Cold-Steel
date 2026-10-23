@@ -18,7 +18,7 @@ use commands::arguments::Arguments;
 use commands::events::CommandEvents;
 use commands::structures::enums::event::Event;
 use commands::structures::enums::r#type::CommandType;
-use configuration::core_configuration;
+use configuration::file;
 use render::bench::BenchRenderer;
 use render::renderer::Renderer;
 use render::test::TestRender;
@@ -41,7 +41,7 @@ fn main() -> Result<(), Error>
 {
     let arguments = Arguments::parse();
     let print_output: bool;
-    let configuration = core_configuration::load_or_create_configuration();
+    let configuration = file::load_or_create_configuration();
 
     let (raw_events, mut renderer) = match arguments.command
     {

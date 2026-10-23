@@ -3,3 +3,4 @@
  */
 pub mod core_configuration;
 pub mod theme;
+pub mod file;
