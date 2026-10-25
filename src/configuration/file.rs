@@ -15,7 +15,7 @@ fn configuration_path() -> PathBuf
 
     else
     {
-        dirs::home_dir().unwrap().join("configuration.yaml")
+        dirs::home_dir().expect("Failed to get the home directory.").join("configuration.yaml")
     }
 }
 
@@ -25,14 +25,15 @@ fn configuration_path() -> PathBuf
 pub fn load_or_create_configuration() -> Configuration
 {
     let configuration_path = configuration_path();
-
-    match fs::read_to_string(&configuration_path)
+    let read_result = fs::read_to_string(&configuration_path);
+    
+    match read_result
     {
         Ok(content) => toml::from_str(&content).expect("Failed to parse Cold Steel configuration file."),
         Err(_) =>
             {
                 let base_configuration = Configuration::default();
-                let toml_value = toml::to_string(&base_configuration).unwrap();
+                let toml_value = toml::to_string(&base_configuration).expect("Failed to serialise configuration.");
 
                 if let Some(parent) = configuration_path.parent()
                 {
