@@ -24,19 +24,17 @@ use render::renderer::Renderer;
 use render::test::TestRender;
 use output::print;
 
-/**
- * The minimum interval between renders.
- */
+/// The minimum interval between renders.
 const MINIMUM_RENDER_INTERVAL: u64 = 100;
 
-/**
- * The minimum interval between polling.
- */
+/// The minimum interval between polling.
 const MINIMUM_POLL_INTERVAL: u64 = 50;
 
-/**
- * The entry point for Cold Steel.
- */
+/// The entry point for Cold Steel.
+/// # Returns
+/// `Result<(), Error>` - Returns Ok or an error.
+/// # Errors
+/// Returns an error if the application fails at any point.
 fn main() -> Result<(), Error>
 {
     let arguments = Arguments::parse();

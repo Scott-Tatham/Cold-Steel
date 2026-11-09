@@ -50,10 +50,10 @@ pub fn filter_events(events: &[Event]) -> FilteredBenchEvents<'_>
 #[cfg(test)]
 mod tests
 {
+    use super::*;
     use super::super::super::commands::structures::bench::enums::bench_event::BenchEvent;
     use super::super::super::commands::structures::test::enums::test_event::TestEvent;
     use super::super::super::commands::structures::test::started::TestStartedEvent;
-    use super::*;
 
     /// Tests the [filter_events] function to assert filtering is correct.
     #[test]
