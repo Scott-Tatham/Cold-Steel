@@ -35,9 +35,8 @@ impl RendererData
 {
     /// Initialises a new instance of the [RendererData].
     /// # Returns
-    /// `Result<RendererData, Error>` - Returns the renderer data or an error.
-    /// # Errors
-    /// Returns an error if the RenderData cannot be created.
+    /// `RendererData` - Returns the new instance of [RendererData].
+    /// `Error` - Returns that the new instance of [RendererData] failed to initialise.
     pub fn new() -> Result<Self, Error>
     {
         terminal::enable_raw_mode()?;
@@ -71,9 +70,8 @@ pub trait Renderer
     /// * `events` - The collection of events being rendered.
     /// * `input_action` - The input action that invoked the render.
     /// # Returns
-    /// `Result<(), Error>` - Returns the result of the render or an error.
-    /// # Errors
-    /// Returns an error if the frame cannot be drawn.
+    /// `Ok(())` - Returns that the frame was drawn successfully.
+    /// `Error` - Returns that the frame fails to draw.
     fn render(&mut self, configuration: &Configuration, events: &[Event], input_action: KeyCode) -> Result<(), Error>;
 
     /// Cleans up the renderer and resets the terminal.

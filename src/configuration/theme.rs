@@ -98,9 +98,8 @@ impl Theme
 /// * `colour` - The colour to serialise.
 /// * `serialiser` - The serialiser to use.
 /// # Returns
-/// `Result<S::Ok, S::Error>` - Returns the result of the serialisation or an error.
-/// # Errors
-/// Returns an error if the colour cannot be serialised.
+/// `S::Ok` - Returns the result of the serialisation.
+/// `S::Error` - Returns an error if the colour cannot be serialised.
 fn serialise_color<S>(colour: &Color, serialiser: S) -> Result<S::Ok, S::Error>
 where
     S: Serializer,
@@ -112,9 +111,8 @@ where
 /// # Arguments
 /// * `deserialiser` - The deserialiser to use.
 /// # Returns
-/// `Result<Color, D::Error>` - Returns the result containing the deserialised colour or an error.
-/// # Errors
-/// Returns an error if the colour cannot be deserialised.
+/// `Color` - Returns the colour deserialised.
+/// `D::Error` - Returns an error if the colour cannot be deserialised.
 fn deserialise_colour<'a, D>(deserialiser: D) -> Result<Color, D::Error>
 where
     D: Deserializer<'a>

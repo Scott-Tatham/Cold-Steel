@@ -23,9 +23,8 @@ impl CommandEvents
     /// # Arguments
     /// * `command_child_process` - The child process of the command.
     /// # Returns
-    /// `Result<CommandEvents, Error>` - The command events or an error.
-    /// # Errors
-    /// Returns an error if the stdout or stderr for the command cannot be read.
+    /// `CommandEvents` - Returns the collection of [CommandEvent].
+    /// `Error` - Returns an error if the stdout or stderr for the command cannot be read.
     pub fn new(command_child_process: &mut Child) -> Result<Self, Error>
     {
         let child_stdout = command_child_process.stdout.take();

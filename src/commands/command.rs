@@ -8,9 +8,8 @@ use std::process::{Child, Command, Stdio};
 /// # Arguments
 /// * `arguments` - The arguments to pass to the command.
 /// # Returns
-/// `Result<Child, Error>` - The child process or an error.
-/// # Errors
-/// Returns an error if the command fails to build.
+/// `Child` - Returns the child process.
+/// `Error` - Returns that the command failed to build.
 pub fn build_command(arguments: Vec<&str>) -> Result<Child, Error>
 {
     Command::new("cargo").args(&arguments).stdout(Stdio::piped()).stderr(Stdio::piped()).spawn()

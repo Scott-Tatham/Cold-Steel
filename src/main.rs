@@ -32,9 +32,8 @@ const MINIMUM_POLL_INTERVAL: u64 = 50;
 
 /// The entry point for Cold Steel.
 /// # Returns
-/// `Result<(), Error>` - Returns Ok or an error.
-/// # Errors
-/// Returns an error if the application fails at any point.
+/// `Ok(())` - Returns that the application executed successfully.
+/// `Error` - Returns that the application failed to run correctly.
 fn main() -> Result<(), Error>
 {
     let arguments = Arguments::parse();

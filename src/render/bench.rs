@@ -35,7 +35,8 @@ impl BenchRenderer
 {
     /// Initialises a new instance of the [BenchRenderer].
     /// # Returns
-    /// `Result<BenchRenderer, Error>` - The bench renderer or an error.
+    /// `TestRender` - Returns the new instance of [BenchRenderer].
+    /// `Error` - Returns that the new instance of [BenchRenderer] failed to initialise.
     /// # Errors
     /// Returns an error if the renderer data cannot be created.
     pub fn new() -> Result<Self, Error>
@@ -86,9 +87,8 @@ impl Renderer for BenchRenderer
     /// * `events` - The collection of events being rendered.
     /// * `input_action` - The input action that invoked the render.
     /// # Returns
-    /// `Result<(), Error>` - The result of the render or an error.
-    /// # Errors
-    /// Returns an error if the terminal cannot be drawn.
+    /// `Ok(())` - Returns that the frame was drawn successfully.
+    /// `Error` - Returns that the frame fails to draw.
     fn render(&mut self, configuration: &Configuration, events: &[Event], input_action: KeyCode) -> Result<(), Error>
     {
         self.process_input(input_action);

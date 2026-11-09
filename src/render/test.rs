@@ -57,11 +57,10 @@ pub struct TestRender
 /// The implementation of the [TestRender].
 impl TestRender
 {
-    /// Initialises a new instance of the [TestRender].
+    /// Initialises a new instance of [TestRender].
     /// # Returns
-    /// `Result<TestRender, Error>` - The test render or an error.
-    /// # Errors
-    /// Returns an error if the TestRender cannot be created.
+    /// `TestRender` - Returns the new instance of [TestRender].
+    /// `Error` - Returns that the new instance of [TestRender] failed to initialise.
     pub fn new(timings: bool) -> Result<Self, Error>
     {
         Ok(Self
@@ -202,9 +201,8 @@ impl Renderer for TestRender
     /// * `events` - The collection of events being rendered.
     /// * `input_action` - The input action that invoked the render.
     /// # Returns
-    /// `Result<(), Error>` - The result of the render or an error.
-    /// # Errors
-    /// Returns an error if the frame cannot be drawn.
+    /// `Ok(())` - Returns that the frame was drawn successfully.
+    /// `Error` - Returns that the frame fails to draw.
     fn render(&mut self, configuration: &Configuration, events: &[Event], input_action: KeyCode) -> Result<(), Error>
     {
         self.process_input(input_action);
